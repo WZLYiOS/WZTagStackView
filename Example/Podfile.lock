@@ -1,0 +1,16 @@
+PODS:
+  - WZTagStackView (0.1.0)
+
+DEPENDENCIES:
+  - WZTagStackView (from `../`)
+
+EXTERNAL SOURCES:
+  WZTagStackView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  WZTagStackView: d764259957aaafc5a566dd84c2c309315ec4d974
+
+PODFILE CHECKSUM: a610535a47510f053c3c8f7b784143d855497a18
+
+COCOAPODS: 1.9.1

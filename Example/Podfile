@@ -1,0 +1,16 @@
+
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+source 'https://gitlab.com/WZiOS/WZiOSPodSpecs.git'
+
+
+platform :ios,'9.0'
+use_frameworks!
+
+target 'WZTagStackView_Example' do
+  pod 'WZTagStackView', :path => '../'
+  
+  target 'WZTagStackView_Tests' do
+    inherit! :search_paths
+    
+  end
+end
