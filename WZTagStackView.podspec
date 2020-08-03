@@ -14,10 +14,10 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://gitlab.com/WZiOS/WZTagStackView'
+  s.homepage         = 'https://github.com/WZLYiOS/WZTagStackView'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'ppqx' => '739140860@qq.com' }
-  s.source           = { :git => 'https://gitlab.com/WZiOS/WZTagStackView.git', :tag => s.version.to_s }
+  s.author           = { 'qiuqixiang' => '739140860@qq.com' }
+  s.source           = { :git => 'https://github.com/WZLYiOS/WZTagStackView.git', :tag => s.version.to_s }
 
   s.requires_arc = true
   s.static_framework = true
