@@ -16,6 +16,9 @@ class TestTableViewCell: UITableViewCell {
         $0.maxWith = UIScreen.main.bounds.size.width - 20
         $0.rowMarn = 10
         $0.verticalMarn = 10
+        $0.topMarn = 20
+        $0.bottomMarn = 30
+        $0.lelftMarn = 50
         return $0
     }(WZTagStackView())
     
