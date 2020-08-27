@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'WZTagStackView'
   s.version          = '1.0.2'
-  s.summary          = 'A short description of WZTagStackView. '
+  s.summary          = 'A short description of WZTagStackView.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
                        DESC
