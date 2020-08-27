@@ -58,16 +58,17 @@ public class WZTagStackView: UIView {
             let view = item.getOriginView()
             view.translatesAutoresizingMaskIntoConstraints = false
             let viewSize = item.getViewSize()
-            if viewSize.width > maxWith - x - verticalMarn  {
-                x = lelftMarn
-                y = y + viewSize.height + rowMarn
-            }
-
+            
             view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: x).isActive = true
             view.topAnchor.constraint(equalTo: topAnchor, constant: y).isActive = true
             view.widthAnchor.constraint(equalToConstant: viewSize.width).isActive = true
             view.heightAnchor.constraint(equalToConstant: viewSize.height).isActive = true
             x = x + viewSize.width + verticalMarn
+            
+            if x > maxWith  {
+                x = lelftMarn
+                y = y + viewSize.height + rowMarn
+            }
             if index == datas.count - 1 {
                 view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -bottomMarn).isActive = true
             }

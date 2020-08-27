@@ -13,12 +13,12 @@ class TestTableViewCell: UITableViewCell {
 
     private lazy var tagView: WZTagStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.maxWith = UIScreen.main.bounds.size.width - 20
+        $0.maxWith = (UIScreen.main.bounds.size.width-20)
         $0.rowMarn = 10
-        $0.verticalMarn = 10
-        $0.topMarn = 20
-        $0.bottomMarn = 30
-        $0.lelftMarn = 50
+        $0.verticalMarn = ($0.maxWith-60*5)/4
+//        $0.topMarn = 20
+//        $0.bottomMarn = 30
+//        $0.lelftMarn = 50
         return $0
     }(WZTagStackView())
     
@@ -33,8 +33,20 @@ class TestTableViewCell: UITableViewCell {
         return $0
     }(UIStackView(arrangedSubviews: [tagView]))
     
+    private lazy var titleLabel: UILabel = {
+        $0.text = "服务内容"
+        return $0
+    }(UILabel())
+    
+    private lazy var rightLabel: UILabel = {
+        $0.text = "服务内容"
+        $0.textAlignment = .right
+        return $0
+    }(UILabel())
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         
         configView()
         configViewLocation()
@@ -45,7 +57,8 @@ class TestTableViewCell: UITableViewCell {
     }
     
     func configView() {
-//        contentView.addSubview(tagView)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(rightLabel)
         contentView.addSubview(stackView)
     }
     func configViewLocation() {
@@ -63,8 +76,10 @@ class TestTableViewCell: UITableViewCell {
 //            stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
 //            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10)
 //        ])
+        titleLabel.frame = CGRect(x: 20, y: 0, width: 100, height: 20)
+        rightLabel.frame = CGRect(x: UIScreen.main.bounds.size.width-100, y: 0, width: 80, height: 20)
         stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
-        stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+        stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30).isActive = true
         stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
         let bottomAncor = stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10)
         bottomAncor.priority = .defaultLow
@@ -77,15 +92,26 @@ class TestTableViewCell: UITableViewCell {
 }
 
 // MARK - 标签视图
-class TestLabel: UILabel, WZTagStackViewProtocol {
+class TestLabel: UIView, WZTagStackViewProtocol {
+    
+    private lazy var lelftImageView: UIImageView = {
+        $0.image = UIImage(named: "ic_workbench_date")
+        return $0
+    }(UIImageView())
+    
+    private lazy var titileLabel: UILabel = {
+        $0.text = "用户库搜索"
+        $0.font = UIFont.systemFont(ofSize: 11)
+        $0.textAlignment = .center
+        return $0
+    }(UILabel())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.cornerRadius = 5
-        self.layer.borderColor = UIColor.red.cgColor
-        self.layer.borderWidth = 1
-        self.text = "手机阿卡收到货"
-        self.textAlignment = .center
+        self.addSubview(lelftImageView)
+        self.addSubview(titileLabel)
+        lelftImageView.frame = CGRect(x: 8, y: 0, width: 44, height: 44)
+        titileLabel.frame = CGRect(x: 0, y: 50, width: getViewSize().width, height: 13)
     }
     
     required init?(coder: NSCoder) {
@@ -97,7 +123,7 @@ class TestLabel: UILabel, WZTagStackViewProtocol {
     }
     
     func getViewSize() -> CGSize {
-        return CGSize(width: ceil((UIScreen.main.bounds.width-50)/3), height: 30)
+        return CGSize(width: 60, height: 65)
     }
     
 }
