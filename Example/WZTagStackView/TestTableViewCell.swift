@@ -16,6 +16,7 @@ class TestTableViewCell: UITableViewCell {
         $0.maxWith = (UIScreen.main.bounds.size.width-20)
         $0.rowMarn = 10
         $0.verticalMarn = ($0.maxWith-60*5)/4
+        $0.backgroundColor = UIColor.orange
 //        $0.topMarn = 20
 //        $0.bottomMarn = 30
 //        $0.lelftMarn = 50
@@ -108,6 +109,7 @@ class TestLabel: UIView, WZTagStackViewProtocol {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = UIColor.red
         self.addSubview(lelftImageView)
         self.addSubview(titileLabel)
         lelftImageView.frame = CGRect(x: 8, y: 0, width: 44, height: 44)

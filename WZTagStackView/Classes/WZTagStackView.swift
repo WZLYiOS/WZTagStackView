@@ -26,6 +26,9 @@ public class WZTagStackView: UIView {
     /// 左边间距
     public var lelftMarn: CGFloat = 0
     
+    /// 右侧间距
+    public var rightMarn: CGFloat = 0
+    
     /// 最大宽度
     public var maxWith: CGFloat = 0
     
@@ -45,33 +48,29 @@ public class WZTagStackView: UIView {
             self.subviews.last?.removeFromSuperview()
         }
         
-        for item in datas {
-            let view = item.getOriginView()
-            view.frame.size = item.getViewSize()
-            self.addSubview(view)
-        }
-        
         var x: CGFloat = lelftMarn
         var y: CGFloat = topMarn
 
         for (index, item) in datas.enumerated() {
             let view = item.getOriginView()
+            self.addSubview(view)
             view.translatesAutoresizingMaskIntoConstraints = false
             let viewSize = item.getViewSize()
+    
+            if viewSize.width > maxWith - x - rightMarn {
+                x = lelftMarn
+                y += viewSize.height + rowMarn
+            }
             
             view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: x).isActive = true
             view.topAnchor.constraint(equalTo: topAnchor, constant: y).isActive = true
             view.widthAnchor.constraint(equalToConstant: viewSize.width).isActive = true
             view.heightAnchor.constraint(equalToConstant: viewSize.height).isActive = true
-            x = x + viewSize.width + verticalMarn
-            
-            if x > maxWith  {
-                x = lelftMarn
-                y = y + viewSize.height + rowMarn
-            }
             if index == datas.count - 1 {
                 view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -bottomMarn).isActive = true
             }
+            
+            x += viewSize.width + verticalMarn
         }
     }
 }
