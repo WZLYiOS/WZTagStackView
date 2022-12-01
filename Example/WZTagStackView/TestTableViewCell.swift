@@ -8,31 +8,21 @@
 
 import UIKit
 import WZTagStackView
+import SnapKit
 
 class TestTableViewCell: UITableViewCell {
 
-    private lazy var tagView: WZTagStackView = {
+    private lazy var tagView: WZStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.maxWith = (UIScreen.main.bounds.size.width-20)
         $0.rowMarn = 10
-        $0.verticalMarn = ($0.maxWith-60*5)/4
-        $0.backgroundColor = UIColor.orange
-//        $0.topMarn = 20
+        $0.verticalMarn = 10
+//        $0.topMarn = 100
 //        $0.bottomMarn = 30
 //        $0.lelftMarn = 50
-        return $0
-    }(WZTagStackView())
-    
-    /// 容器
-    private lazy var stackView: UIStackView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = UIColor.clear
         $0.axis = .vertical
-        $0.distribution = .fill
-        $0.alignment = .fill
-        $0.spacing = 0
         return $0
-    }(UIStackView(arrangedSubviews: [tagView]))
+    }(WZStackView())
+    
     
     private lazy var titleLabel: UILabel = {
         $0.text = "服务内容"
@@ -60,35 +50,29 @@ class TestTableViewCell: UITableViewCell {
     func configView() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(rightLabel)
-        contentView.addSubview(stackView)
+        contentView.addSubview(tagView)
     }
     func configViewLocation() {
-        
-//        tagView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
-//        tagView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-//        tagView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
-//        let bottomAncor = tagView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10)
-//        bottomAncor.priority = .defaultLow
-//        bottomAncor.isActive = true
-        
-//        NSLayoutConstraint.activate([
-//            stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
-//            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-//            stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
-//            stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10)
-//        ])
-        titleLabel.frame = CGRect(x: 20, y: 0, width: 100, height: 20)
-        rightLabel.frame = CGRect(x: UIScreen.main.bounds.size.width-100, y: 0, width: 80, height: 20)
-        stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
-        stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30).isActive = true
-        stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
-        let bottomAncor = stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10)
-        bottomAncor.priority = .defaultLow
-        bottomAncor.isActive = true
+
+        titleLabel.snp.makeConstraints { make in
+            make.left.equalTo(20)
+            make.top.equalToSuperview()
+        }
+        rightLabel.snp.makeConstraints { make in
+            make.right.equalTo(-10)
+            make.top.equalToSuperview()
+        }
+        tagView.snp.makeConstraints { make in
+            make.left.equalTo(10)
+            make.right.equalTo(-10)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.bottom.lessThanOrEqualToSuperview().offset(-40).priority(.low)
+        }
     }
     
     func upload(tags: [TestLabel]) {
-        tagView.reload(datas: tags)
+//        tagView.reload(datas: tags)
+        tagView.addArrangedSubviews(tags)
     }
 }
 
@@ -109,15 +93,31 @@ class TestLabel: UIView, WZTagStackViewProtocol {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.red
-        self.addSubview(lelftImageView)
-        self.addSubview(titileLabel)
-        lelftImageView.frame = CGRect(x: 8, y: 0, width: 44, height: 44)
-        titileLabel.frame = CGRect(x: 0, y: 50, width: getViewSize().width, height: 13)
+        configView()
+        configViewLocation()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    /// 添加视图
+    func configView() {
+        addSubview(lelftImageView)
+        addSubview(titileLabel)
+    }
+    
+    /// 视图位置
+    func configViewLocation() {
+        lelftImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(0)
+            make.size.equalTo(CGSize(width: 44, height: 44))
+        }
+        titileLabel.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalTo(lelftImageView.snp.bottom).offset(10)
+        }
     }
     
     func getOriginView() -> UIView {
@@ -128,4 +128,18 @@ class TestLabel: UIView, WZTagStackViewProtocol {
         return CGSize(width: 60, height: 65)
     }
     
+}
+
+/// 文本
+class TestLabel2: UILabel {
+    
+    init(text: String) {
+        super.init(frame: CGRect.zero)
+        self.text = text
+        self.backgroundColor = UIColor.blue
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

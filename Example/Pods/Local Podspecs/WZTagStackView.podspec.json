@@ -1,26 +1,31 @@
 {
   "name": "WZTagStackView",
-  "version": "0.1.0",
-  "summary": "A short description of WZTagStackView.",
+  "version": "2.0.0",
+  "summary": "A short description of WZTagStackView",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://gitlab.com/WZiOS/WZTagStackView",
+  "homepage": "https://github.com/WZLYiOS/WZTagStackView",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "ppqx": "739140860@qq.com"
+    "qiuqixiang": "739140860@qq.com"
   },
   "source": {
-    "git": "https://gitlab.com/WZiOS/WZTagStackView.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/WZLYiOS/WZTagStackView.git",
+    "tag": "2.0.0"
   },
   "requires_arc": true,
   "static_framework": true,
   "swift_versions": "5.0",
   "platforms": {
-    "ios": "9.0"
+    "ios": "10.0"
   },
   "source_files": "WZTagStackView/Classes/*.swift",
+  "dependencies": {
+    "SnapKit": [
+      "~> 5.0.1"
+    ]
+  },
   "swift_version": "5.0"
 }

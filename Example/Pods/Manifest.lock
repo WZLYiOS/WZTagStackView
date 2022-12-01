@@ -1,16 +1,23 @@
 PODS:
-  - WZTagStackView (0.1.0)
+  - SnapKit (5.0.1)
+  - WZTagStackView (2.0.0):
+    - SnapKit (~> 5.0.1)
 
 DEPENDENCIES:
   - WZTagStackView (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
 
 EXTERNAL SOURCES:
   WZTagStackView:
     :path: "../"
 
 SPEC CHECKSUMS:
-  WZTagStackView: d764259957aaafc5a566dd84c2c309315ec4d974
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  WZTagStackView: 9b402370eb5a3dacc3828639e1a284f13c1742b7
 
-PODFILE CHECKSUM: a610535a47510f053c3c8f7b784143d855497a18
+PODFILE CHECKSUM: e6a396fc228db9ceb3f62c6d16426c9cad8aa9e4
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1

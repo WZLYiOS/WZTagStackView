@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private lazy var dataArray: [[TestLabel]] = [[TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel()]]
+    private lazy var dataArray: [[TestLabel]] = [[TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel()],[TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel(),TestLabel()]]
     
     private lazy var tableView: UITableView = {
         $0.delegate = self
