@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'WZTagStackView'
-  s.version          = '3.0.5'
+  s.version          = '3.0.6'
   s.summary          = 'A short description of WZTagStackView'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -23,7 +23,7 @@ TODO: Add long description of the pod here.
   s.requires_arc = true
   s.static_framework = true
   s.swift_version         = '5.0'
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '11.0'
   s.source_files = 'WZTagStackView/Classes/*.swift'
-  s.dependency 'SnapKit', '~> 5.0.1'
+  s.dependency 'WZSnapKit', '~> 3.0.0'
 end
