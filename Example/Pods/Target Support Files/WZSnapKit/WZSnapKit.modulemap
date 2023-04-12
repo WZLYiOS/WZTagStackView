@@ -1,0 +1,6 @@
+framework module WZSnapKit {
+  umbrella header "WZSnapKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

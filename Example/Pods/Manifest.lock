@@ -1,12 +1,19 @@
 PODS:
-  - SnapKit (5.0.1)
-  - WZTagStackView (2.0.0):
-    - SnapKit (~> 5.0.1)
+  - SnapKit (5.6.0)
+  - WZSnapKit (3.1.0):
+    - SnapKit (~> 5.6.0)
+    - WZSnapKit/Source (= 3.1.0)
+  - WZSnapKit/Source (3.1.0):
+    - SnapKit (~> 5.6.0)
+  - WZTagStackView (3.0.6):
+    - WZSnapKit (~> 3.1.0)
 
 DEPENDENCIES:
   - WZTagStackView (from `../`)
 
 SPEC REPOS:
+  https://github.com/WZLYiOS/WZPodSpecs.git:
+    - WZSnapKit
   trunk:
     - SnapKit
 
@@ -15,9 +22,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  WZTagStackView: 9b402370eb5a3dacc3828639e1a284f13c1742b7
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  WZSnapKit: 75404296990992cadbaaa2b774013fe519801256
+  WZTagStackView: 34b40787cd336894e301dc536e56cd118a7d61ad
 
-PODFILE CHECKSUM: e6a396fc228db9ceb3f62c6d16426c9cad8aa9e4
+PODFILE CHECKSUM: a748255d4909adb65b9714d61de8cbffb1e1026d
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.3
